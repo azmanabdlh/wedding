@@ -13,16 +13,15 @@ export default function Jumbotron() {
         </div>
       </div>
 
-      <CountdownWrapper endAt={new Date()} />
+      <CountdownWrapper/>
     </div>
   );
 }
 
 
 
-interface CountdownWrapperProps  {
-  startAt?: Date
-  endAt: Date
+interface CountdownWrapperProps  {  
+  readonly endAt?: Date
   onEnded?(): void;
 }
 
@@ -31,7 +30,7 @@ interface CountdownNumberProps {
   readonly labelText: string
 }
 
-function CountdownWrapper(props: CountdownWrapperProps) {  
+function CountdownWrapper() {  
   return (
     <div className="desc flex justify-center items-center flex-col z-10">
       <h3 className="text-2xl text-indigo-900 font-bold font-darumadrop">Acara Akan Berlangsung</h3>
@@ -44,7 +43,7 @@ function CountdownWrapper(props: CountdownWrapperProps) {
 }
 
 
-function Countdown(props: React.HTMLAttributes<HTMLDivElement>) {
+function Countdown(props: Readonly<React.HTMLAttributes<HTMLDivElement>>) {
   return (    
     <div className={"countdown flex flex-row " + props?.className}>
       <CountdownNumber value={2} labelText="Hari" />
